@@ -1,46 +1,44 @@
-import { defineField, defineType } from 'sanity'
-
-export default defineType({
+export default {
   name: 'project',
-  title: 'Portfolio Project',
+  title: 'Project',
   type: 'document',
   fields: [
-    defineField({
+    {
       name: 'title',
       title: 'Project Title',
       type: 'string',
-    }),
-    defineField({
+    },
+    {
       name: 'description',
-      title: 'Project Description',
+      title: 'Description / Case Study',
       type: 'text',
-      description: 'Briefly explain the strategy, context, and impact behind this design.',
-    }),
-    defineField({
-      name: 'order',
-      title: 'Grid Position',
-      type: 'number',
-      description: 'The position in the grid (1, 2, 3, etc.)',
-    }),
-    defineField({
+      description: 'Keep it concise. e.g., Context: Visual identity... Impact: Cohesive marketing...',
+    },
+    {
       name: 'image',
       title: 'Cover Image',
       type: 'image',
       options: {
         hotspot: true,
       },
-    }),
-    defineField({
-      name: 'videos',
-      title: 'Videos',
-      type: 'array',
-      of: [{ type: 'file', options: { accept: 'video/mp4' } }],
-    }),
-    defineField({
+    },
+    {
       name: 'gallery',
       title: 'Image Gallery',
       type: 'array',
-      of: [{ type: 'image' }],
-    }),
+      of: [{ type: 'image', options: { hotspot: true } }],
+    },
+    {
+      name: 'videos',
+      title: 'Videos',
+      type: 'array',
+      of: [{ type: 'file', options: { accept: 'video/*' } }],
+    },
+    {
+      name: 'order',
+      title: 'Display Order',
+      type: 'number',
+      description: 'Enter a number (1, 2, 3...) to control the order this appears on the website.',
+    },
   ],
-})
+};
